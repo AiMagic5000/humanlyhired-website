@@ -57,28 +57,28 @@ const milestones = [
 
 const teamMembers = [
   {
-    name: "Sarah Mitchell",
-    role: "Founder & CEO",
-    image: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=400&h=400&fit=crop",
-    bio: "20+ years in executive recruitment",
+    name: "Allie Pearson",
+    role: "Managing Director",
+    image: "https://cdn.prod.website-files.com/67ec4cfbdf0509c176a8ce28/69ae21477cdee786dd2a9b9e_hf_20260309_012033_28ab78b2-0135-4827-8174-ee43f8da5bff.png",
+    bio: "Oversees all staffing operations",
   },
   {
-    name: "David Chen",
-    role: "Director of Operations",
-    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop",
-    bio: "15 years transforming staffing processes",
+    name: "Corey Pearson",
+    role: "Chief Technology Officer",
+    image: "https://cdn.prod.website-files.com/67ec4cfbdf0509c176a8ce28/6989e3c699a6f566bbd4e7e0_hf_20260209_133712_432c1773-abf6-4c7a-a3ac-571fd88c0dba.png",
+    bio: "Drives technology and platform strategy",
   },
   {
-    name: "Jennifer Martinez",
-    role: "Head of Client Success",
-    image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&h=400&fit=crop",
-    bio: "Building lasting client partnerships",
+    name: "Rebecca Maguire",
+    role: "Assistant Director",
+    image: "https://cdn.prod.website-files.com/67ec4cfbdf0509c176a8ce28/69a79f728fdf37f650e945d1_Rebecca%20Maguire.png",
+    bio: "Manages day-to-day staffing operations",
   },
   {
-    name: "Michael Thompson",
-    role: "VP of Talent Acquisition",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop",
-    bio: "Expert in technical recruiting",
+    name: "Anna Price",
+    role: "Senior Staffing Agent",
+    image: "https://cdn.prod.website-files.com/67ec4cfbdf0509c176a8ce28/69ae228f7a7b95d8b5d86914_hf_20260309_012844_3e9d73f5-768c-4391-83bd-78d2f4e1ce63.png",
+    bio: "Compliance and regulated industry placements",
   },
 ];
 
