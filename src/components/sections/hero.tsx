@@ -53,7 +53,7 @@ export function Hero() {
         >
           <source src="/videos/hero-bg.mp4" type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-black/50" />
+        <div className="absolute inset-0 bg-white/80" />
       </div>
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 lg:px-8">
@@ -70,7 +70,7 @@ export function Hero() {
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.2, duration: 0.4 }}
-              className="inline-flex flex-wrap items-center gap-2 px-3 sm:px-4 py-2 rounded-full bg-white/10 border border-white/20 backdrop-blur-sm mb-6 max-w-full"
+              className="inline-flex flex-wrap items-center gap-2 px-3 sm:px-4 py-2 rounded-full bg-emerald-50 border border-emerald-100 mb-6 max-w-full"
             >
               <div className="flex -space-x-2 flex-shrink-0">
                 {trustBadgeImages.map((img, i) => (
@@ -84,7 +84,7 @@ export function Hero() {
                   />
                 ))}
               </div>
-              <span className="text-xs sm:text-sm font-medium text-white">
+              <span className="text-xs sm:text-sm font-medium text-emerald-900">
                 Trusted by 500+ companies
               </span>
               <div className="flex items-center gap-0.5 flex-shrink-0">
@@ -95,7 +95,7 @@ export function Hero() {
             </motion.div>
 
             {/* Main Headline */}
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight tracking-tight">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight tracking-tight">
               The right{" "}
               <span className="relative">
                 <span className="relative z-10 text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-teal-600">
@@ -108,7 +108,7 @@ export function Hero() {
               change everything
             </h1>
 
-            <p className="mt-6 text-lg sm:text-xl text-gray-200 leading-relaxed">
+            <p className="mt-6 text-lg sm:text-xl text-gray-600 leading-relaxed">
               {siteConfig.name} matches skilled professionals with companies that need them --
               across tech, healthcare, finance, manufacturing, and more. Fast placements. Lasting results.
             </p>
@@ -152,7 +152,7 @@ export function Hero() {
 
             {/* Quick Links */}
             <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-gray-300">
-              <span className="font-medium text-white">Popular:</span>
+              <span className="font-medium text-emerald-900">Popular:</span>
               {["Software Engineer", "Healthcare", "Finance", "Remote"].map((term) => (
                 <Link
                   key={term}
@@ -177,13 +177,13 @@ export function Hero() {
                   Hire Talent
                 </Link>
               </Button>
-              <Button asChild variant="outline" size="lg" className="w-full sm:w-auto px-6 sm:px-8 py-5 sm:py-6 h-auto text-base font-semibold rounded-xl border-2 border-white/30 text-white hover:border-emerald-400 hover:bg-white/10">
+              <Button asChild variant="outline" size="lg" className="w-full sm:w-auto px-6 sm:px-8 py-5 sm:py-6 h-auto text-base font-semibold rounded-xl border-2 border-gray-200 hover:border-emerald-200 hover:bg-emerald-50">
                 <Link href="/jobs" className="flex items-center justify-center gap-2">
                   <Briefcase className="h-5 w-5" />
                   Find Jobs
                 </Link>
               </Button>
-              <Button variant="ghost" size="lg" className="w-full sm:w-auto px-6 py-5 sm:py-6 h-auto text-base font-semibold rounded-xl text-gray-300 hover:text-emerald-400 hover:bg-white/10" asChild>
+              <Button variant="ghost" size="lg" className="w-full sm:w-auto px-6 py-5 sm:py-6 h-auto text-base font-semibold rounded-xl text-gray-600 hover:text-emerald-600 hover:bg-white/10" asChild>
                 <Link href="/about" className="flex items-center justify-center gap-2">
                   <Play className="h-5 w-5 fill-current" />
                   Watch How It Works
@@ -196,7 +196,7 @@ export function Hero() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.5, duration: 0.5 }}
-              className="mt-8 sm:mt-12 pt-6 sm:pt-8 border-t border-white/20"
+              className="mt-8 sm:mt-12 pt-6 sm:pt-8 border-t border-gray-100"
             >
               <div className="flex flex-wrap items-center gap-3 sm:gap-4">
                 <div className="flex -space-x-2 sm:-space-x-3 flex-shrink-0">
@@ -216,7 +216,7 @@ export function Hero() {
                     {[1, 2, 3, 4, 5].map((i) => (
                       <Star key={i} className="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-yellow-400 text-yellow-400" />
                     ))}
-                    <span className="ml-1 sm:ml-2 text-xs sm:text-sm font-semibold text-white">4.9/5</span>
+                    <span className="ml-1 sm:ml-2 text-xs sm:text-sm font-semibold text-gray-900">4.9/5</span>
                   </div>
                   <p className="text-xs sm:text-sm text-gray-300">from 500+ verified reviews</p>
                 </div>
