@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -20,9 +21,14 @@ export function Header() {
         {/* Logo */}
         <div className="flex lg:flex-1">
           <Link href="/" className="-m-1.5 p-1.5">
-            <span className="text-2xl font-bold text-blue-600">
-              Humanly<span className="text-gray-900">Staffing</span>
-            </span>
+            <Image
+              src="/logo.png"
+              alt="Humanly Hired"
+              width={200}
+              height={50}
+              className="h-10 w-auto"
+              priority
+            />
           </Link>
         </div>
 
@@ -130,7 +136,7 @@ export function Header() {
               <div className="flex items-center justify-between">
                 <Link href="/" className="-m-1.5 p-1.5" onClick={() => setMobileMenuOpen(false)}>
                   <span className="text-xl font-bold text-blue-600">
-                    Humanly<span className="text-gray-900">Staffing</span>
+                    Humanly<span className="text-teal-600">Hired</span>
                   </span>
                 </Link>
                 <button

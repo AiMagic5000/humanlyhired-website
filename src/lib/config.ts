@@ -1,7 +1,7 @@
 export const siteConfig = {
   name: "Humanly Hired",
   legalName: "Brand Metrics LLC",
-  tagline: "Connecting Top Talent with Growing Companies",
+  tagline: "Empowering Careers. Connecting People.",
   description: "Premier staffing and recruitment solutions. We connect exceptional candidates with industry-leading employers across technology, healthcare, finance, and more.",
 
   contact: {

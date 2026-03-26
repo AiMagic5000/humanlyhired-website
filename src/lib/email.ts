@@ -167,7 +167,7 @@ export const emailTemplates = {
         </head>
         <body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px;">
           <div style="text-align: center; margin-bottom: 30px;">
-            <h1 style="color: #1E40AF; margin: 0; font-size: 24px;">Humanly<span style="color: #1F2937;">Staffing</span></h1>
+            <h1 style="color: #1E40AF; margin: 0; font-size: 24px;">Humanly<span style="color: #0D9488;">Hired</span></h1>
           </div>
 
           <div style="background: linear-gradient(135deg, #1E40AF 0%, #3B82F6 100%); border-radius: 12px; padding: 30px; color: white; margin-bottom: 30px;">
@@ -218,7 +218,7 @@ export const emailTemplates = {
         </head>
         <body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px;">
           <div style="text-align: center; margin-bottom: 30px;">
-            <h1 style="color: #1E40AF; margin: 0; font-size: 24px;">Humanly<span style="color: #1F2937;">Staffing</span></h1>
+            <h1 style="color: #1E40AF; margin: 0; font-size: 24px;">Humanly<span style="color: #0D9488;">Hired</span></h1>
           </div>
 
           <div style="background: linear-gradient(135deg, #1E40AF 0%, #3B82F6 100%); border-radius: 12px; padding: 30px; color: white; margin-bottom: 30px; text-align: center;">
@@ -279,7 +279,7 @@ export const emailTemplates = {
         </head>
         <body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px;">
           <div style="text-align: center; margin-bottom: 30px;">
-            <h1 style="color: #1E40AF; margin: 0; font-size: 24px;">Humanly<span style="color: #1F2937;">Staffing</span></h1>
+            <h1 style="color: #1E40AF; margin: 0; font-size: 24px;">Humanly<span style="color: #0D9488;">Hired</span></h1>
           </div>
 
           <div style="background: #10B981; border-radius: 12px; padding: 20px; color: white; margin-bottom: 30px;">
@@ -344,7 +344,7 @@ export const emailTemplates = {
         </head>
         <body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px;">
           <div style="text-align: center; margin-bottom: 30px;">
-            <h1 style="color: #1E40AF; margin: 0; font-size: 24px;">Humanly<span style="color: #1F2937;">Staffing</span></h1>
+            <h1 style="color: #1E40AF; margin: 0; font-size: 24px;">Humanly<span style="color: #0D9488;">Hired</span></h1>
           </div>
 
           <div style="background: #10B981; border-radius: 12px; padding: 20px; color: white; margin-bottom: 30px;">
@@ -406,7 +406,7 @@ export const emailTemplates = {
         </head>
         <body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px;">
           <div style="text-align: center; margin-bottom: 30px;">
-            <h1 style="color: #1E40AF; margin: 0; font-size: 24px;">Humanly<span style="color: #1F2937;">Staffing</span></h1>
+            <h1 style="color: #1E40AF; margin: 0; font-size: 24px;">Humanly<span style="color: #0D9488;">Hired</span></h1>
           </div>
 
           <div style="background: #3B82F6; border-radius: 12px; padding: 20px; color: white; margin-bottom: 30px;">

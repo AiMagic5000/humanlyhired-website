@@ -14,7 +14,7 @@ export function Footer() {
           <div className="lg:col-span-2">
             <Link href="/" className="inline-block">
               <span className="text-2xl font-bold text-white">
-                Humanly<span className="text-blue-400">Staffing</span>
+                Humanly<span className="text-teal-400">Hired</span>
               </span>
             </Link>
             <p className="mt-4 max-w-md text-gray-400">

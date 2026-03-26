@@ -4,8 +4,21 @@ import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/lib/config";
 
 export const metadata: Metadata = {
-  title: "Frequently Asked Questions",
-  description: "Find answers to common questions about Humanly Hired's services, process, and policies.",
+  title: "FAQ - Staffing & Recruitment",
+  description:
+    "Get answers about Humanly Hired fees, hiring timelines, screening process, and guarantees. Questions for employers and job seekers answered here.",
+  openGraph: {
+    title: "FAQ - Staffing & Recruitment | Humanly Hired",
+    description:
+      "Get answers about Humanly Hired fees, hiring timelines, screening process, and guarantees. Questions for employers and job seekers answered here.",
+    url: "https://humanlyhired.com/faq",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "FAQ - Staffing & Recruitment | Humanly Hired",
+    description:
+      "Get answers about Humanly Hired fees, hiring timelines, screening process, and guarantees. Questions for employers and job seekers answered here.",
+  },
 };
 
 const faqs = {

@@ -74,7 +74,7 @@ export default function DashboardLayout({
           {/* Logo */}
           <div className="flex items-center justify-between h-16 px-6 border-b border-gray-200">
             <Link href="/" className="text-xl font-bold text-blue-600">
-              Humanly<span className="text-gray-900">Staffing</span>
+              Humanly<span className="text-teal-600">Hired</span>
             </Link>
             <button
               className="lg:hidden p-2 rounded-lg hover:bg-gray-100"

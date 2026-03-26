@@ -5,8 +5,21 @@ import { CheckCircle, Award, Users, Clock, Shield, TrendingUp } from "lucide-rea
 import { Button } from "@/components/ui/button";
 
 export const metadata: Metadata = {
-  title: "Why Choose Us",
-  description: "Discover why leading companies trust Humanly Hired for their recruitment needs.",
+  title: "Why Choose Humanly Hired",
+  description:
+    "98% client satisfaction, 14-day avg fill time, and 90-day guarantee. See why 500+ companies trust Humanly Hired for staffing and recruitment.",
+  openGraph: {
+    title: "Why Choose Humanly Hired | Staffing That Delivers",
+    description:
+      "98% client satisfaction, 14-day avg fill time, and 90-day guarantee. See why 500+ companies trust Humanly Hired for staffing and recruitment.",
+    url: "https://humanlyhired.com/about/why-choose-us",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Why Choose Humanly Hired | Staffing That Delivers",
+    description:
+      "98% client satisfaction, 14-day avg fill time, and 90-day guarantee. See why 500+ companies trust Humanly Hired for staffing and recruitment.",
+  },
 };
 
 const reasons = [

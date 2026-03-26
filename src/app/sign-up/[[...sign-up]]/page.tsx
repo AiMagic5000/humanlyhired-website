@@ -37,7 +37,7 @@ export default function SignUpPage() {
         </div>
         <div className="relative z-10 flex flex-col justify-center p-12 text-white">
           <Link href="/" className="text-2xl font-bold mb-8">
-            Humanly<span className="text-indigo-200">Staffing</span>
+            Humanly<span className="text-teal-200">Hired</span>
           </Link>
           <h1 className="text-4xl font-bold mb-4">
             Start Your Journey
@@ -71,7 +71,7 @@ export default function SignUpPage() {
         <div className="w-full max-w-md">
           <div className="lg:hidden mb-8 text-center">
             <Link href="/" className="text-2xl font-bold text-blue-600">
-              Humanly<span className="text-gray-900">Staffing</span>
+              Humanly<span className="text-teal-600">Hired</span>
             </Link>
           </div>
           <SafeSignUp
