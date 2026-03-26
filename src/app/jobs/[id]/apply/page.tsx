@@ -48,7 +48,7 @@ const applicationSchema = z.object({
   yearsExperience: z.string().min(1, "Years of experience is required"),
   coverLetter: z.string().min(50, "Cover letter must be at least 50 characters"),
   whyInterested: z.string().min(20, "Please tell us why you're interested"),
-  salary: z.string().optional(),
+  salary: z.string().min(1, "Desired salary is required"),
   startDate: z.string().min(1, "Start date is required"),
   referral: z.string().optional(),
 });
