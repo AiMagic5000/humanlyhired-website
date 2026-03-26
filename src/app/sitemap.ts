@@ -7,16 +7,29 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const staticPages = [
     "",
     "/about",
+    "/about/team",
+    "/about/why-choose-us",
+    "/about/process",
     "/services",
+    "/services/executive-search",
+    "/services/contract-staffing",
+    "/services/direct-hire",
+    "/services/rpo",
+    "/services/talent-sourcing",
+    "/services/payroll",
     "/industries",
     "/jobs",
     "/employers",
     "/employers/request-talent",
+    "/employers/case-studies",
     "/contact",
     "/blog",
     "/faq",
     "/privacy",
     "/terms",
+    "/cookies",
+    "/sign-in",
+    "/sign-up",
   ];
 
   const staticEntries = staticPages.map((page) => ({
@@ -33,6 +46,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "finance",
     "manufacturing",
     "retail",
+    "logistics",
     "administrative",
   ];
 

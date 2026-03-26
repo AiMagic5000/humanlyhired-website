@@ -4,7 +4,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Cookie Policy",
   description:
-    "Cookie Policy for Brand Metrics LLC Learn how we use cookies, tracking technologies, and how to manage your preferences.",
+    "Cookie Policy for Brand Metrics LLC. Learn how we use cookies, tracking technologies, and how to manage your preferences.",
 };
 
 const effectiveDate = "January 13, 2026";
@@ -41,7 +41,7 @@ export default function CookiesPage() {
             Cookie Policy Summary
           </h2>
           <p className="mt-2 text-blue-800">
-            We use cookies to enhance your experience, analyze site usage, and enable certain functionalities.
+            We use cookies to improve your experience, analyze site usage, and enable certain functionalities.
             Essential cookies are required for the site to function. You can manage non-essential cookies through
             your browser settings or our cookie preferences tool.
           </p>
@@ -162,7 +162,7 @@ export default function CookiesPage() {
 
             <h3>Functional Cookies</h3>
             <p>
-              Functional cookies enable enhanced functionality and personalization. They may be set by us or by third-party providers whose services we have added to our pages.
+              Functional cookies enable added functionality and personalization. They may be set by us or by third-party providers whose services we have added to our pages.
             </p>
             <div className="my-4 rounded-lg bg-gray-50 p-4">
               <p className="text-sm text-gray-600"><strong>Features Enabled:</strong></p>

@@ -34,10 +34,10 @@ export const siteConfig = {
   },
 
   colors: {
-    primary: "#1E40AF",
-    secondary: "#3B82F6",
-    accent: "#10B981",
-    dark: "#1F2937"
+    primary: "#059669",
+    secondary: "#0D9488",
+    accent: "#14B8A6",
+    dark: "#134E4A"
   }
 } as const;
 

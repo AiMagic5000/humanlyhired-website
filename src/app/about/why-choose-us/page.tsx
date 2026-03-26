@@ -13,17 +13,17 @@ const reasons = [
   {
     icon: Users,
     title: "Industry Expertise",
-    description: "Our recruiters specialize in specific industries, giving them deep knowledge of market trends and candidate expectations.",
+    description: "Our recruiters specialize in specific industries, giving them solid knowledge of market trends and candidate expectations.",
   },
   {
     icon: Clock,
     title: "Fast Time-to-Fill",
-    description: "Our extensive talent network and streamlined processes mean we can fill positions faster than the industry average.",
+    description: "Our extensive talent network and simplified processes mean we can fill positions faster than the industry average.",
   },
   {
     icon: Shield,
     title: "Quality Guarantee",
-    description: "We stand behind our placements with comprehensive guarantees to ensure your satisfaction.",
+    description: "We stand behind our placements with full guarantees to ensure your satisfaction.",
   },
   {
     icon: TrendingUp,

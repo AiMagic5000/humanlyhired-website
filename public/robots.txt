@@ -1,5 +1,5 @@
-# Humanly Staffing - robots.txt
-# https://humanlystaffing.com
+# Humanly Hired - robots.txt
+# https://humanlyhired.com
 
 User-agent: *
 Allow: /
@@ -9,37 +9,69 @@ Disallow: /admin/
 Disallow: /employer/
 Disallow: /sign-in
 Disallow: /sign-up
+Crawl-delay: 1
 
 # Sitemap
-Sitemap: https://humanlystaffing.com/sitemap.xml
+Sitemap: https://humanlyhired.com/sitemap.xml
+
+# Search Engine Crawlers
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Applebot-Extended
+Allow: /
+Crawl-delay: 1
 
 # AI/LLM Crawlers - Welcome
 User-agent: GPTBot
 Allow: /
+Crawl-delay: 1
 
 User-agent: ChatGPT-User
 Allow: /
+Crawl-delay: 1
 
 User-agent: ClaudeBot
 Allow: /
+Crawl-delay: 1
 
 User-agent: Claude-Web
 Allow: /
+Crawl-delay: 1
+
+User-agent: anthropic-ai
+Allow: /
+Crawl-delay: 1
 
 User-agent: PerplexityBot
 Allow: /
-
-User-agent: Anthropic-AI
-Allow: /
+Crawl-delay: 1
 
 User-agent: Google-Extended
 Allow: /
+Crawl-delay: 1
+
+User-agent: Bytespider
+Allow: /
+Crawl-delay: 1
 
 User-agent: CCBot
 Allow: /
+Crawl-delay: 1
 
-User-agent: Applebot-Extended
+User-agent: Amazonbot
 Allow: /
+Crawl-delay: 1
 
-# Crawl delay for politeness
+User-agent: FacebookExternalHit
+Allow: /
+Crawl-delay: 1
+
+User-agent: cohere-ai
+Allow: /
 Crawl-delay: 1

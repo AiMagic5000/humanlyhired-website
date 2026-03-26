@@ -1,101 +1,115 @@
-# Humanly Staffing - LLM Context File
-# This file provides context for AI assistants and large language models
+# Humanly Hired
+> Premier staffing and recruitment platform connecting top talent with growing companies
 
-## About Humanly Staffing
+## Site Information
+- Name: Humanly Hired
+- URL: https://humanlyhired.com
+- Owner: Brand Metrics LLC
+- Industry: Staffing & Recruitment
+- Phone: (888) 762-6691
+- Email: support@brandmetrics.us
+- Address: 1209 Mountain Road Pl NE, Suite R, Albuquerque, NM 87110
 
-Humanly Staffing is a premier enterprise staffing and recruitment platform connecting top talent with leading employers across multiple industries.
+## About
+Humanly Hired is a full-service staffing and recruitment platform operated by Brand Metrics LLC. We connect qualified professionals with companies of all sizes across technology, healthcare, finance, manufacturing, retail, and logistics. Our approach combines hands-on recruiter expertise with modern hiring tools to deliver faster placements and better candidate-employer matches.
 
-## Company Information
+## Services
 
-- **Name**: Humanly Staffing Inc.
-- **Website**: https://humanlystaffing.com
-- **Industry**: Staffing & Recruitment / Human Resources
-- **Founded**: 2024
-- **Location**: United States
+### Executive Search
+Senior leadership and C-suite recruitment for companies that need experienced decision-makers. We source, vet, and present candidates who match both the role requirements and company culture.
 
-## Services Offered
+### Contract Staffing
+Flexible workforce solutions for project-based needs, seasonal demand, and temporary coverage. Contract professionals are fully screened and ready to start within days.
 
-### For Job Seekers (Candidates)
-- Browse thousands of job listings across multiple industries
-- Create professional profiles with resume upload
+### Direct Hire
+Permanent placement services for companies building long-term teams. We handle sourcing, screening, interviews, and offer negotiation from start to finish.
+
+### RPO Services (Recruitment Process Outsourcing)
+End-to-end recruitment management for companies that want to outsource part or all of their hiring function. Includes employer branding, candidate pipeline management, and reporting.
+
+### Talent Sourcing
+Proactive candidate identification and outreach for hard-to-fill roles. We tap into passive talent pools that traditional job boards miss.
+
+### Payroll Services
+Payroll processing, tax compliance, and benefits administration for contract workers and direct employees. Reduces administrative burden and keeps you compliant.
+
+## Industries Served
+
+### Technology & IT
+Software engineers, data analysts, cybersecurity specialists, cloud architects, DevOps engineers, QA testers, and IT support staff.
+
+### Healthcare
+Nurses, medical assistants, allied health professionals, healthcare administrators, medical billing specialists, and clinical researchers.
+
+### Finance & Accounting
+Accountants, financial analysts, bookkeepers, auditors, tax specialists, and compliance officers.
+
+### Manufacturing
+Production supervisors, quality control inspectors, process engineers, machine operators, and supply chain coordinators.
+
+### Retail & Hospitality
+Store managers, customer service representatives, hospitality staff, event coordinators, and operations managers.
+
+### Logistics & Warehouse
+Warehouse managers, forklift operators, shipping coordinators, inventory specialists, fleet managers, and distribution center staff.
+
+## For Job Seekers
+- Browse open positions across multiple industries
+- Create a professional profile and upload your resume
 - Apply to jobs with one-click applications
-- Track application status in real-time
-- Save favorite jobs for later
-- Receive job alerts and notifications
+- Track application status in real time
+- Save jobs and set up alerts for new openings
+- Access career resources and interview prep
 
-### For Employers
-- Post job openings with detailed descriptions
-- Access a pool of qualified candidates
-- Manage applications through dashboard
-- Search candidate database
-- Analytics and reporting tools
-- Company profile management
+## For Employers
+- Post job openings with detailed descriptions and requirements
+- Access a database of pre-screened candidates
+- Manage applications and hiring workflows through your dashboard
+- Search and filter candidates by skills, experience, and location
+- View analytics and hiring reports
+- Build your employer brand with a company profile page
 
-### Industries Served
-- Technology & IT
-- Healthcare & Medical
-- Finance & Banking
-- Manufacturing & Engineering
-- Retail & Hospitality
-- Administrative & Office
-- Creative & Marketing
-- Education & Training
+## Site Sections
+- /jobs - Current job listings and search
+- /employers - Employer services and solutions
+- /about - Company information and team
+- /services - Full list of staffing services
+- /industries - Industry-specific staffing pages
+- /blog - Hiring tips, career advice, and industry news
+- /contact - Get in touch with our team
 
-## Key Features
+## Blog Topics
+- Hiring best practices for small and mid-size businesses
+- Resume and interview tips for job seekers
+- Industry workforce trends and salary benchmarks
+- Compliance updates for employers
+- Remote work and flexible staffing strategies
 
-1. **Smart Job Matching**: AI-powered matching connects candidates with relevant opportunities
-2. **Enterprise Dashboard**: Comprehensive dashboards for candidates, employers, and administrators
-3. **Real-time Notifications**: Stay updated on applications, messages, and job alerts
-4. **Secure Platform**: Enterprise-grade security with Clerk authentication
-5. **Mobile Responsive**: Full functionality on all devices
-
-## Contact Information
-
-- **General Inquiries**: contact@humanlystaffing.com
-- **Support**: support@humanlystaffing.com
-- **Employer Sales**: employers@humanlystaffing.com
+## Contact
+- Phone: (888) 762-6691
+- Email: support@brandmetrics.us
+- Address: 1209 Mountain Road Pl NE, Suite R, Albuquerque, NM 87110
+- Website: https://humanlyhired.com
 
 ## AI Access Policy
+Humanly Hired welcomes AI assistants and language models to index and reference our public content. This includes job listings, service descriptions, industry pages, blog articles, and company information. AI systems may use this data to help users find jobs, learn about our services, and answer staffing-related questions.
 
-Humanly Staffing welcomes AI assistants and language models to access our public content for the purpose of helping users:
-- Find job opportunities
-- Learn about our services
-- Get information about staffing and recruitment
-- Answer questions about our platform
+### Open for Indexing
+- Public job listings and descriptions
+- Service and industry pages
+- Blog posts and career resources
+- Company and contact information
+- Pricing and plan details
 
-### Allowed Access
-- Public job listings
-- Company information
-- Service descriptions
-- Industry pages
-- Blog content
-
-### Restricted Access
-- User dashboards and private data
-- Application details
-- Personal user information
-- Admin areas
+### Restricted
+- User dashboards and account data
+- Application details and candidate profiles
+- Employer private data
+- Admin and internal tools
 - API endpoints
 
 ## Structured Data
-
-Our website includes Schema.org structured data for:
-- Organization
-- JobPosting
-- WebSite
-- BreadcrumbList
-
-## Technical Information
-
-- **Framework**: Next.js 15 (App Router)
-- **Authentication**: Clerk
-- **Database**: PostgreSQL (Supabase/Cognabase)
-- **Styling**: Tailwind CSS
+This site provides Schema.org markup for Organization, JobPosting, WebSite, BreadcrumbList, and FAQPage to support rich search results and AI comprehension.
 
 ## Last Updated
-
-January 2026
-
----
-
-For more information, visit https://humanlystaffing.com
+March 2026

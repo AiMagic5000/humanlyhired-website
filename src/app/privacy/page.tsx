@@ -4,7 +4,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Privacy Policy",
   description:
-    "Comprehensive privacy policy for Brand Metrics LLC Learn how we collect, use, protect, and share your personal information in compliance with GDPR, CCPA, and applicable privacy laws.",
+    "Privacy policy for Brand Metrics LLC. Learn how we collect, use, protect, and share your personal information in compliance with GDPR, CCPA, and applicable privacy laws.",
 };
 
 const effectiveDate = "January 13, 2026";
@@ -526,7 +526,7 @@ export default function PrivacyPage() {
 
             <h3>5.1 Security Program</h3>
             <p>
-              We maintain a comprehensive information security program designed
+              We maintain a full information security program designed
               to protect your personal information from unauthorized access,
               use, disclosure, alteration, and destruction. Our security program
               includes administrative, technical, and physical safeguards
@@ -1045,7 +1045,7 @@ export default function PrivacyPage() {
               </li>
               <li>
                 <strong>Functional Cookies:</strong> These cookies enable
-                enhanced functionality and personalization, such as remembering
+                added functionality and personalization, such as remembering
                 your preferences and settings. If you do not allow these
                 cookies, some or all of these features may not function
                 properly.

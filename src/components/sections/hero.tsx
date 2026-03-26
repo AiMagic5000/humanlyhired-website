@@ -44,9 +44,9 @@ export function Hero() {
     <section className="relative overflow-hidden bg-white">
       {/* Background Pattern */}
       <div className="absolute inset-0 -z-10">
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-white to-indigo-50" />
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1200px] h-[1200px] bg-gradient-radial from-blue-100/40 to-transparent rounded-full blur-3xl" />
-        <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-gradient-radial from-indigo-100/30 to-transparent rounded-full blur-3xl" />
+        <div className="absolute inset-0 bg-gradient-to-br from-emerald-50 via-white to-teal-50" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1200px] h-[1200px] bg-gradient-radial from-emerald-100/40 to-transparent rounded-full blur-3xl" />
+        <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-gradient-radial from-teal-100/30 to-transparent rounded-full blur-3xl" />
       </div>
 
       <div className="mx-auto max-w-7xl px-4 lg:px-8">
@@ -63,7 +63,7 @@ export function Hero() {
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.2, duration: 0.4 }}
-              className="inline-flex flex-wrap items-center gap-2 px-3 sm:px-4 py-2 rounded-full bg-blue-50 border border-blue-100 mb-6 max-w-full"
+              className="inline-flex flex-wrap items-center gap-2 px-3 sm:px-4 py-2 rounded-full bg-emerald-50 border border-emerald-100 mb-6 max-w-full"
             >
               <div className="flex -space-x-2 flex-shrink-0">
                 {trustBadgeImages.map((img, i) => (
@@ -77,7 +77,7 @@ export function Hero() {
                   />
                 ))}
               </div>
-              <span className="text-xs sm:text-sm font-medium text-blue-900">
+              <span className="text-xs sm:text-sm font-medium text-emerald-900">
                 Trusted by 500+ companies
               </span>
               <div className="flex items-center gap-0.5 flex-shrink-0">
@@ -89,21 +89,21 @@ export function Hero() {
 
             {/* Main Headline */}
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight tracking-tight">
-              Hiring{" "}
+              The right{" "}
               <span className="relative">
-                <span className="relative z-10 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">
-                  top talent
+                <span className="relative z-10 text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-teal-600">
+                  people
                 </span>
                 <svg className="absolute -bottom-2 left-0 w-full" viewBox="0 0 200 12" fill="none">
-                  <path d="M2 8.5C50 2.5 150 2.5 198 8.5" stroke="#3B82F6" strokeWidth="3" strokeLinecap="round" />
+                  <path d="M2 8.5C50 2.5 150 2.5 198 8.5" stroke="#059669" strokeWidth="3" strokeLinecap="round" />
                 </svg>
               </span>{" "}
-              for fast-growing teams
+              change everything
             </h1>
 
             <p className="mt-6 text-lg sm:text-xl text-gray-600 leading-relaxed">
-              {siteConfig.name} is your global recruitment and staffing partner dedicated to finding,
-              hiring, and managing exceptional talent across technology, healthcare, finance, and beyond.
+              {siteConfig.name} matches skilled professionals with companies that need them --
+              across tech, healthcare, finance, manufacturing, and more. Fast placements. Lasting results.
             </p>
 
             {/* Search Bar */}
@@ -121,7 +121,7 @@ export function Hero() {
                     placeholder="Job title, keywords, or company"
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
-                    className="w-full pl-12 pr-4 py-4 rounded-xl bg-gray-50 border-0 text-gray-900 placeholder:text-gray-500 focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all"
+                    className="w-full pl-12 pr-4 py-4 rounded-xl bg-gray-50 border-0 text-gray-900 placeholder:text-gray-500 focus:ring-2 focus:ring-emerald-500 focus:bg-white transition-all"
                   />
                 </div>
                 <div className="flex-1 relative">
@@ -131,10 +131,10 @@ export function Hero() {
                     placeholder="City, state, or remote"
                     value={location}
                     onChange={(e) => setLocation(e.target.value)}
-                    className="w-full pl-12 pr-4 py-4 rounded-xl bg-gray-50 border-0 text-gray-900 placeholder:text-gray-500 focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all"
+                    className="w-full pl-12 pr-4 py-4 rounded-xl bg-gray-50 border-0 text-gray-900 placeholder:text-gray-500 focus:ring-2 focus:ring-emerald-500 focus:bg-white transition-all"
                   />
                 </div>
-                <Button size="lg" className="w-full sm:w-auto px-6 sm:px-8 py-4 h-auto text-base font-semibold rounded-xl bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 shadow-lg shadow-blue-500/25" asChild>
+                <Button size="lg" className="w-full sm:w-auto px-6 sm:px-8 py-4 h-auto text-base font-semibold rounded-xl bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-700 hover:to-teal-800 shadow-lg shadow-emerald-500/25" asChild>
                   <Link href="/jobs" className="flex items-center justify-center gap-2">
                     Search Jobs
                     <ArrowRight className="h-4 w-4" />
@@ -150,7 +150,7 @@ export function Hero() {
                 <Link
                   key={term}
                   href={`/jobs?q=${encodeURIComponent(term)}`}
-                  className="hover:text-blue-600 transition-colors"
+                  className="hover:text-emerald-600 transition-colors"
                 >
                   {term}
                 </Link>
@@ -164,19 +164,19 @@ export function Hero() {
               transition={{ delay: 0.4, duration: 0.5 }}
               className="mt-10 flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4"
             >
-              <Button asChild size="lg" className="w-full sm:w-auto px-6 sm:px-8 py-5 sm:py-6 h-auto text-base font-semibold rounded-xl bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 shadow-lg shadow-blue-500/25">
+              <Button asChild size="lg" className="w-full sm:w-auto px-6 sm:px-8 py-5 sm:py-6 h-auto text-base font-semibold rounded-xl bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-700 hover:to-teal-800 shadow-lg shadow-emerald-500/25">
                 <Link href="/employers/request-talent" className="flex items-center justify-center gap-2">
                   <Users className="h-5 w-5" />
                   Hire Talent
                 </Link>
               </Button>
-              <Button asChild variant="outline" size="lg" className="w-full sm:w-auto px-6 sm:px-8 py-5 sm:py-6 h-auto text-base font-semibold rounded-xl border-2 border-gray-200 hover:border-blue-200 hover:bg-blue-50">
+              <Button asChild variant="outline" size="lg" className="w-full sm:w-auto px-6 sm:px-8 py-5 sm:py-6 h-auto text-base font-semibold rounded-xl border-2 border-gray-200 hover:border-emerald-200 hover:bg-emerald-50">
                 <Link href="/jobs" className="flex items-center justify-center gap-2">
                   <Briefcase className="h-5 w-5" />
                   Find Jobs
                 </Link>
               </Button>
-              <Button variant="ghost" size="lg" className="w-full sm:w-auto px-6 py-5 sm:py-6 h-auto text-base font-semibold rounded-xl text-gray-600 hover:text-blue-600" asChild>
+              <Button variant="ghost" size="lg" className="w-full sm:w-auto px-6 py-5 sm:py-6 h-auto text-base font-semibold rounded-xl text-gray-600 hover:text-emerald-600" asChild>
                 <Link href="/about" className="flex items-center justify-center gap-2">
                   <Play className="h-5 w-5 fill-current" />
                   Watch How It Works
@@ -226,8 +226,8 @@ export function Hero() {
           >
             {/* Main Image */}
             <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-3xl transform rotate-3 scale-105 opacity-10" />
-              <div className="relative rounded-3xl overflow-hidden shadow-2xl shadow-blue-900/20">
+              <div className="absolute inset-0 bg-gradient-to-br from-emerald-600 to-teal-600 rounded-3xl transform rotate-3 scale-105 opacity-10" />
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl shadow-emerald-900/20">
                 <Image
                   src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
                   alt="Professional team collaboration"
@@ -292,14 +292,14 @@ export function Hero() {
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.8, duration: 0.5 }}
-                className="absolute -bottom-4 left-8 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl shadow-xl p-4 text-white"
+                className="absolute -bottom-4 left-8 bg-gradient-to-r from-emerald-600 to-teal-600 rounded-2xl shadow-xl p-4 text-white"
               >
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-xl bg-white/20 flex items-center justify-center">
                     <Briefcase className="w-5 h-5" />
                   </div>
                   <div>
-                    <p className="text-sm font-medium text-blue-100">New Jobs Added</p>
+                    <p className="text-sm font-medium text-emerald-100">New Jobs Added</p>
                     <p className="text-xl font-bold">50+ this week</p>
                   </div>
                 </div>
@@ -321,7 +321,7 @@ export function Hero() {
                 transition={{ delay: 0.5 + index * 0.1, duration: 0.5 }}
                 className="text-center"
               >
-                <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-blue-100 text-blue-600 mb-3">
+                <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-emerald-100 text-emerald-600 mb-3">
                   <stat.icon className="w-6 h-6" />
                 </div>
                 <p className="text-3xl font-bold text-gray-900">{stat.value}</p>

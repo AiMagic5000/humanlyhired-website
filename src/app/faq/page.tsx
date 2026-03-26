@@ -50,7 +50,7 @@ const faqs = {
     },
     {
       question: "Do you offer RPO (Recruitment Process Outsourcing)?",
-      answer: "Yes, we offer comprehensive RPO services where we can manage your entire recruitment function or specific hiring projects. This includes everything from job posting to onboarding support.",
+      answer: "Yes, we offer full RPO services where we can manage your entire recruitment function or specific hiring projects. This includes everything from job posting to onboarding support.",
     },
   ],
   general: [
