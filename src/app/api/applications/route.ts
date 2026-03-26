@@ -4,7 +4,7 @@ import { auth } from "@clerk/nextjs/server";
 export const dynamic = "force-dynamic";
 import { z } from "zod";
 import { supabaseAdmin } from "@/lib/supabase";
-import { sendEmail, sendFormSubmissionEmail, emailTemplates } from "@/lib/email";
+import { sendEmail, emailTemplates } from "@/lib/email";
 
 const applicationSchema = z.object({
   jobId: z.string(),
@@ -12,16 +12,11 @@ const applicationSchema = z.object({
   lastName: z.string().min(2),
   email: z.string().email(),
   phone: z.string().min(10),
-  linkedin: z.string().url().optional().or(z.literal("")),
-  portfolio: z.string().url().optional().or(z.literal("")),
-  currentTitle: z.string().min(2),
-  yearsExperience: z.string().min(1),
-  coverLetter: z.string().min(50),
-  whyInterested: z.string().min(20),
-  salary: z.string().optional(),
+  monthlyNeed: z.string().min(1),
+  monthlyWant: z.string().min(1),
   startDate: z.string().min(1),
-  referral: z.string().optional(),
-  resumeUrl: z.string().optional(),
+  hoursPerWeek: z.string().min(1),
+  workPreference: z.string().min(1),
 });
 
 export async function POST(request: NextRequest) {
@@ -52,21 +47,18 @@ export async function POST(request: NextRequest) {
           job_id: validatedData.jobId,
           candidate_id: userId,
           status: "pending",
-          cover_letter: validatedData.coverLetter,
-          resume_url: validatedData.resumeUrl || null,
+          cover_letter: null,
+          resume_url: null,
           answers: {
             firstName: validatedData.firstName,
             lastName: validatedData.lastName,
             email: validatedData.email,
             phone: validatedData.phone,
-            linkedin: validatedData.linkedin || "",
-            portfolio: validatedData.portfolio || "",
-            currentTitle: validatedData.currentTitle,
-            yearsExperience: validatedData.yearsExperience,
-            whyInterested: validatedData.whyInterested,
-            salary: validatedData.salary || "",
+            monthlyNeed: validatedData.monthlyNeed,
+            monthlyWant: validatedData.monthlyWant,
             startDate: validatedData.startDate,
-            referral: validatedData.referral || "",
+            hoursPerWeek: validatedData.hoursPerWeek,
+            workPreference: validatedData.workPreference,
           },
         })
         .select()
@@ -115,26 +107,36 @@ export async function POST(request: NextRequest) {
       // Don't fail the request if email fails
     }
 
-    // Send notification email to admin with JSON attachment
+    // Send admin notification with all application data
     try {
-      const adminEmailHtml = emailTemplates.newApplicationAdmin({
-        candidateName: `${validatedData.firstName} ${validatedData.lastName}`,
-        candidateEmail: validatedData.email,
-        jobTitle: "Job Application",
-        applicationId: application.id,
-      }).html;
+      const adminHtml = `
+        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+          <div style="background: #059669; padding: 20px; border-radius: 8px 8px 0 0;">
+            <h1 style="color: white; margin: 0; font-size: 20px;">New Job Application</h1>
+          </div>
+          <div style="background: #f9fafb; padding: 24px; border: 1px solid #e5e7eb; border-radius: 0 0 8px 8px;">
+            <h2 style="color: #1f2937; margin-top: 0;">Applicant Details</h2>
+            <table style="width: 100%; border-collapse: collapse;">
+              <tr><td style="padding: 8px; border-bottom: 1px solid #e5e7eb; font-weight: bold; width: 40%;">Name</td><td style="padding: 8px; border-bottom: 1px solid #e5e7eb;">${validatedData.firstName} ${validatedData.lastName}</td></tr>
+              <tr><td style="padding: 8px; border-bottom: 1px solid #e5e7eb; font-weight: bold;">Email</td><td style="padding: 8px; border-bottom: 1px solid #e5e7eb;"><a href="mailto:${validatedData.email}">${validatedData.email}</a></td></tr>
+              <tr><td style="padding: 8px; border-bottom: 1px solid #e5e7eb; font-weight: bold;">Phone</td><td style="padding: 8px; border-bottom: 1px solid #e5e7eb;"><a href="tel:${validatedData.phone}">${validatedData.phone}</a></td></tr>
+              <tr><td style="padding: 8px; border-bottom: 1px solid #e5e7eb; font-weight: bold;">Monthly Need</td><td style="padding: 8px; border-bottom: 1px solid #e5e7eb;">${validatedData.monthlyNeed}</td></tr>
+              <tr><td style="padding: 8px; border-bottom: 1px solid #e5e7eb; font-weight: bold;">Monthly Want</td><td style="padding: 8px; border-bottom: 1px solid #e5e7eb;">${validatedData.monthlyWant}</td></tr>
+              <tr><td style="padding: 8px; border-bottom: 1px solid #e5e7eb; font-weight: bold;">Start Date</td><td style="padding: 8px; border-bottom: 1px solid #e5e7eb;">${validatedData.startDate}</td></tr>
+              <tr><td style="padding: 8px; border-bottom: 1px solid #e5e7eb; font-weight: bold;">Hours/Week</td><td style="padding: 8px; border-bottom: 1px solid #e5e7eb;">${validatedData.hoursPerWeek}</td></tr>
+              <tr><td style="padding: 8px; border-bottom: 1px solid #e5e7eb; font-weight: bold;">Work Preference</td><td style="padding: 8px; border-bottom: 1px solid #e5e7eb;">${validatedData.workPreference}</td></tr>
+              <tr><td style="padding: 8px; font-weight: bold;">Job Applied For</td><td style="padding: 8px;">${validatedData.jobId}</td></tr>
+            </table>
+            <p style="color: #6b7280; font-size: 12px; margin-top: 16px;">Submitted: ${new Date().toLocaleString()}</p>
+          </div>
+        </div>
+      `;
 
-      await sendFormSubmissionEmail(
-        "job-application",
-        {
-          ...validatedData,
-          applicationId: application.id,
-          submittedAt: new Date().toISOString(),
-          formType: "Job Application",
-        },
-        `New Job Application: ${validatedData.firstName} ${validatedData.lastName}`,
-        adminEmailHtml
-      );
+      await sendEmail({
+        to: "support@humanlyhired.com",
+        subject: "New Application: " + validatedData.firstName + " " + validatedData.lastName,
+        html: adminHtml,
+      });
     } catch (emailError) {
       console.error("Failed to send admin notification:", emailError);
     }
