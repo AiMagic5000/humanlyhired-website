@@ -39,13 +39,13 @@ interface JobData {
   skills?: string[];  // Skills from external jobs
 }
 
-// Fetch job from external API by ID
+// Fetch job from external API by ID (use localhost for server-side self-fetch)
 async function getExternalJob(id: string): Promise<JobData | null> {
   try {
-    // Get the base URL from environment or use relative URL
-    const baseUrl = process.env.NEXT_PUBLIC_APP_URL || '';
+    const baseUrl = 'http://localhost:3000';
     const response = await fetch(`${baseUrl}/api/jobs?limit=500`, {
-      next: { revalidate: 300 } // Cache for 5 minutes
+      next: { revalidate: 300 },
+      cache: 'no-store',
     });
 
     if (!response.ok) return null;
