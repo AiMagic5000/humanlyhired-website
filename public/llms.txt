@@ -1,0 +1,101 @@
+# Humanly Staffing - LLM Context File
+# This file provides context for AI assistants and large language models
+
+## About Humanly Staffing
+
+Humanly Staffing is a premier enterprise staffing and recruitment platform connecting top talent with leading employers across multiple industries.
+
+## Company Information
+
+- **Name**: Humanly Staffing Inc.
+- **Website**: https://humanlystaffing.com
+- **Industry**: Staffing & Recruitment / Human Resources
+- **Founded**: 2024
+- **Location**: United States
+
+## Services Offered
+
+### For Job Seekers (Candidates)
+- Browse thousands of job listings across multiple industries
+- Create professional profiles with resume upload
+- Apply to jobs with one-click applications
+- Track application status in real-time
+- Save favorite jobs for later
+- Receive job alerts and notifications
+
+### For Employers
+- Post job openings with detailed descriptions
+- Access a pool of qualified candidates
+- Manage applications through dashboard
+- Search candidate database
+- Analytics and reporting tools
+- Company profile management
+
+### Industries Served
+- Technology & IT
+- Healthcare & Medical
+- Finance & Banking
+- Manufacturing & Engineering
+- Retail & Hospitality
+- Administrative & Office
+- Creative & Marketing
+- Education & Training
+
+## Key Features
+
+1. **Smart Job Matching**: AI-powered matching connects candidates with relevant opportunities
+2. **Enterprise Dashboard**: Comprehensive dashboards for candidates, employers, and administrators
+3. **Real-time Notifications**: Stay updated on applications, messages, and job alerts
+4. **Secure Platform**: Enterprise-grade security with Clerk authentication
+5. **Mobile Responsive**: Full functionality on all devices
+
+## Contact Information
+
+- **General Inquiries**: contact@humanlystaffing.com
+- **Support**: support@humanlystaffing.com
+- **Employer Sales**: employers@humanlystaffing.com
+
+## AI Access Policy
+
+Humanly Staffing welcomes AI assistants and language models to access our public content for the purpose of helping users:
+- Find job opportunities
+- Learn about our services
+- Get information about staffing and recruitment
+- Answer questions about our platform
+
+### Allowed Access
+- Public job listings
+- Company information
+- Service descriptions
+- Industry pages
+- Blog content
+
+### Restricted Access
+- User dashboards and private data
+- Application details
+- Personal user information
+- Admin areas
+- API endpoints
+
+## Structured Data
+
+Our website includes Schema.org structured data for:
+- Organization
+- JobPosting
+- WebSite
+- BreadcrumbList
+
+## Technical Information
+
+- **Framework**: Next.js 15 (App Router)
+- **Authentication**: Clerk
+- **Database**: PostgreSQL (Supabase/Cognabase)
+- **Styling**: Tailwind CSS
+
+## Last Updated
+
+January 2026
+
+---
+
+For more information, visit https://humanlystaffing.com
