@@ -41,23 +41,22 @@ export function Hero() {
   const [location, setLocation] = React.useState("");
 
   return (
-    <section className="relative overflow-hidden bg-black">
+    <section className="relative overflow-hidden">
       {/* Video Background */}
-      <div className="absolute inset-0 -z-10 overflow-hidden">
+      <div className="absolute inset-0 z-0 overflow-hidden">
         <video
           autoPlay
           muted
           loop
           playsInline
           className="absolute inset-0 w-full h-full object-cover"
-          poster=""
         >
           <source src="/videos/hero-bg.mp4" type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-gradient-to-br from-black/60 via-black/40 to-emerald-900/30" />
+        <div className="absolute inset-0 bg-gradient-to-br from-black/50 via-black/30 to-emerald-900/20" />
       </div>
 
-      <div className="mx-auto max-w-7xl px-4 lg:px-8">
+      <div className="relative z-10 mx-auto max-w-7xl px-4 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center py-16 lg:py-24">
           {/* Left Content */}
           <motion.div
@@ -318,7 +317,7 @@ export function Hero() {
       </div>
 
       {/* Stats Bar */}
-      <div className="border-t border-gray-100 bg-white">
+      <div className="relative z-10 border-t border-gray-100 bg-white">
         <div className="mx-auto max-w-7xl px-4 lg:px-8 py-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {stats.map((stat, index) => (
@@ -341,7 +340,7 @@ export function Hero() {
       </div>
 
       {/* Client Logos */}
-      <div className="border-t border-gray-100 bg-white py-8">
+      <div className="relative z-10 border-t border-gray-100 bg-white py-8">
         <div className="mx-auto max-w-7xl px-4 lg:px-8">
           <p className="text-center text-sm font-medium text-gray-500 mb-6">
             TRUSTED BY INDUSTRY LEADERS
