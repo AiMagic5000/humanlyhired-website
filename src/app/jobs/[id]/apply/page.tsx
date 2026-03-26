@@ -24,6 +24,8 @@ import {
   FileText,
   MessageSquare,
   Pencil,
+  Sparkles,
+  Wand2,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -101,6 +103,8 @@ export default function ApplyPage() {
   const [jobLoading, setJobLoading] = React.useState(true);
   const [quickComments, setQuickComments] = React.useState("");
   const [quickResumeFile, setQuickResumeFile] = React.useState("");
+  const [resumeFile, setResumeFile] = React.useState<File | null>(null);
+  const [generating, setGenerating] = React.useState(false);
 
   // Fetch job data - first check mock data, then database
   React.useEffect(() => {
@@ -283,6 +287,35 @@ export default function ApplyPage() {
       );
     } finally {
       setIsSubmitting(false);
+    }
+  };
+
+  // Generate AI intro for quick-apply comments
+  const generateIntro = async (template: string) => {
+    if (!profile) return;
+    setGenerating(true);
+    try {
+      const response = await fetch("/api/ai-intro", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        credentials: "include",
+        body: JSON.stringify({
+          profile,
+          jobTitle: job?.title || "",
+          template,
+        }),
+      });
+      const data = await response.json();
+      if (data.success && data.text) {
+        setQuickComments(data.text);
+        toast.success("Intro generated! Feel free to edit it.");
+      } else {
+        toast.error("Could not generate intro. Try again.");
+      }
+    } catch {
+      toast.error("Generation failed. Please write manually.");
+    } finally {
+      setGenerating(false);
     }
   };
 
@@ -504,25 +537,88 @@ export default function ApplyPage() {
                   <label className="block text-sm font-medium text-gray-700 mb-1">
                     Resume (optional)
                   </label>
-                  <div className="p-4 border-2 border-dashed border-gray-200 rounded-xl text-center">
-                    <FileText className="w-8 h-8 text-gray-400 mx-auto mb-2" />
-                    <p className="text-sm text-gray-600 mb-3">
-                      Upload a resume to stand out
-                    </p>
-                    <Input
-                      type="text"
-                      placeholder="Paste a link to your resume (Google Drive, Dropbox, etc.)"
-                      value={quickResumeFile}
-                      onChange={(e) => setQuickResumeFile(e.target.value)}
+                  <div className="border-2 border-dashed border-gray-200 rounded-xl p-6 text-center hover:border-emerald-300 transition-colors">
+                    <input
+                      type="file"
+                      id="resume-upload"
+                      accept=".pdf,.doc,.docx"
+                      className="hidden"
+                      onChange={(e) => {
+                        const file = e.target.files?.[0];
+                        if (file) {
+                          if (file.size > 5 * 1024 * 1024) {
+                            toast.error("File must be under 5MB");
+                            return;
+                          }
+                          setResumeFile(file);
+                        }
+                      }}
                     />
+                    <label
+                      htmlFor="resume-upload"
+                      className="cursor-pointer flex flex-col items-center gap-2"
+                    >
+                      <div className="w-12 h-12 rounded-full bg-emerald-50 flex items-center justify-center">
+                        <FileText className="w-6 h-6 text-emerald-600" />
+                      </div>
+                      {resumeFile ? (
+                        <span className="text-sm font-medium text-emerald-700">
+                          {resumeFile.name}
+                        </span>
+                      ) : (
+                        <>
+                          <span className="text-sm font-medium text-gray-700">
+                            Click to upload resume
+                          </span>
+                          <span className="text-xs text-gray-500">
+                            PDF, DOC, or DOCX (max 5MB)
+                          </span>
+                        </>
+                      )}
+                    </label>
                   </div>
                 </div>
 
-                {/* Additional Comments */}
+                {/* Additional Comments with AI Intro Generator */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
-                    Additional comments (optional)
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Additional Comments
                   </label>
+                  <div className="flex flex-wrap gap-2 mb-3">
+                    <button
+                      type="button"
+                      onClick={() => generateIntro("professional-intro")}
+                      disabled={generating}
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-lg bg-emerald-50 text-emerald-700 hover:bg-emerald-100 border border-emerald-200 transition-colors disabled:opacity-50"
+                    >
+                      <Sparkles className="w-3.5 h-3.5" />
+                      Professional Intro
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => generateIntro("career-story")}
+                      disabled={generating}
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-lg bg-blue-50 text-blue-700 hover:bg-blue-100 border border-blue-200 transition-colors disabled:opacity-50"
+                    >
+                      <Wand2 className="w-3.5 h-3.5" />
+                      Career Story
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => generateIntro("why-good-fit")}
+                      disabled={generating}
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-lg bg-purple-50 text-purple-700 hover:bg-purple-100 border border-purple-200 transition-colors disabled:opacity-50"
+                    >
+                      <Wand2 className="w-3.5 h-3.5" />
+                      Why I'm a Good Fit
+                    </button>
+                  </div>
+                  {generating && (
+                    <div className="flex items-center gap-2 text-sm text-emerald-600 mb-2">
+                      <Loader2 className="w-4 h-4 animate-spin" />
+                      Generating personalized intro...
+                    </div>
+                  )}
                   <div className="relative">
                     <MessageSquare className="absolute left-3 top-3 w-4 h-4 text-gray-400" />
                     <textarea
