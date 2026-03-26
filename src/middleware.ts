@@ -10,6 +10,7 @@ const isProtectedRoute = createRouteMatcher([
   '/applications(.*)',
   '/profile(.*)',
   '/settings(.*)',
+  '/jobs/(.*)/apply(.*)',
 ]);
 
 // Public routes matcher - kept for reference/future use

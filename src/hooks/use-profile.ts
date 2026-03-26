@@ -24,7 +24,7 @@ export function useProfile() {
     try {
       setLoading(true);
       setError(null);
-      const response = await fetch("/api/profile");
+      const response = await fetch("/api/profile", { credentials: "include" });
       const result = await response.json();
 
       if (!response.ok) {
@@ -51,6 +51,7 @@ export function useProfile() {
       const response = await fetch("/api/profile", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
+        credentials: "include",
         body: JSON.stringify(data),
       });
 

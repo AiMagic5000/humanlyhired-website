@@ -6,6 +6,7 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { UserButton, SignedIn, SignedOut } from "@clerk/nextjs";
 import { siteConfig, navigation } from "@/lib/config";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -102,13 +103,21 @@ export function Header() {
         </div>
 
         {/* Desktop CTA buttons */}
-        <div className="hidden lg:flex lg:flex-1 lg:justify-end lg:gap-x-3">
+        <div className="hidden lg:flex lg:flex-1 lg:justify-end lg:gap-x-3 lg:items-center">
           <Button asChild variant="outline" size="sm">
             <Link href="/jobs">Find Jobs</Link>
           </Button>
-          <Button asChild size="sm">
-            <Link href="/sign-in">Login</Link>
-          </Button>
+          <SignedOut>
+            <Button asChild size="sm">
+              <Link href="/sign-in">Login</Link>
+            </Button>
+          </SignedOut>
+          <SignedIn>
+            <Button asChild variant="outline" size="sm">
+              <Link href="/dashboard">Dashboard</Link>
+            </Button>
+            <UserButton afterSignOutUrl="/" />
+          </SignedIn>
           <Button asChild size="sm">
             <Link href="/employers/request-talent">Hire Talent</Link>
           </Button>
@@ -188,11 +197,23 @@ export function Header() {
                     ))}
                   </div>
                   <div className="py-6 space-y-3">
-                    <Button asChild className="w-full">
-                      <Link href="/sign-in" onClick={() => setMobileMenuOpen(false)}>
-                        Login
-                      </Link>
-                    </Button>
+                    <SignedOut>
+                      <Button asChild className="w-full">
+                        <Link href="/sign-in" onClick={() => setMobileMenuOpen(false)}>
+                          Login
+                        </Link>
+                      </Button>
+                    </SignedOut>
+                    <SignedIn>
+                      <Button asChild variant="outline" className="w-full">
+                        <Link href="/dashboard" onClick={() => setMobileMenuOpen(false)}>
+                          Dashboard
+                        </Link>
+                      </Button>
+                      <div className="flex justify-center pt-2">
+                        <UserButton afterSignOutUrl="/" />
+                      </div>
+                    </SignedIn>
                     <Button asChild className="w-full">
                       <Link href="/employers/request-talent" onClick={() => setMobileMenuOpen(false)}>
                         Hire Talent
