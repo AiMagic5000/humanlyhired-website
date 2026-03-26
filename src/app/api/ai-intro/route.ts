@@ -3,8 +3,9 @@ import { auth } from "@clerk/nextjs/server";
 
 export const dynamic = "force-dynamic";
 
-const CF_ACCOUNT_ID = process.env.CF_ACCOUNT_ID || "82f3c6e0ba2e585cd0fe3492151de1a0";
-const CF_API_TOKEN = process.env.CF_WORKERS_TOKEN || "d1u7Q68RYC9f_2GVt8YoviMFMi58zlskrPj1y1Ho";
+const CF_ACCOUNT_ID = "82f3c6e0ba2e585cd0fe3492151de1a0";
+const CF_AUTH_EMAIL = "Coreypearsonemail@gmail.com";
+const CF_AUTH_KEY = "922460400012ed8596f9188ad3a21aac2918e";
 
 export async function POST(request: NextRequest) {
   try {
@@ -71,7 +72,8 @@ First person. Honest, direct, human tone. No AI cliches. Vary sentence length.`;
       {
         method: "POST",
         headers: {
-          Authorization: `Bearer ${CF_API_TOKEN}`,
+          "X-Auth-Email": CF_AUTH_EMAIL,
+          "X-Auth-Key": CF_AUTH_KEY,
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
