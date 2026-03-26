@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Mail, Phone, MapPin, Linkedin, Twitter, Facebook } from "lucide-react";
 import { siteConfig, navigation } from "@/lib/config";
 import { Input } from "@/components/ui/input";
@@ -13,9 +14,13 @@ export function Footer() {
           {/* Company Info */}
           <div className="lg:col-span-2">
             <Link href="/" className="inline-block">
-              <span className="text-2xl font-bold text-white">
-                Humanly<span className="text-teal-400">Hired</span>
-              </span>
+              <Image
+                src="/logo.png"
+                alt="Humanly Hired"
+                width={200}
+                height={50}
+                className="h-10 w-auto brightness-0 invert"
+              />
             </Link>
             <p className="mt-4 max-w-md text-gray-400">
               {siteConfig.description}
