@@ -41,12 +41,20 @@ export function Hero() {
   const [location, setLocation] = React.useState("");
 
   return (
-    <section className="relative overflow-hidden bg-white">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 -z-10">
-        <div className="absolute inset-0 bg-gradient-to-br from-emerald-50 via-white to-teal-50" />
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1200px] h-[1200px] bg-gradient-radial from-emerald-100/40 to-transparent rounded-full blur-3xl" />
-        <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-gradient-radial from-teal-100/30 to-transparent rounded-full blur-3xl" />
+    <section className="relative overflow-hidden bg-black">
+      {/* Video Background */}
+      <div className="absolute inset-0 -z-10 overflow-hidden">
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+          poster=""
+        >
+          <source src="/videos/hero-bg.mp4" type="video/mp4" />
+        </video>
+        <div className="absolute inset-0 bg-gradient-to-br from-black/60 via-black/40 to-emerald-900/30" />
       </div>
 
       <div className="mx-auto max-w-7xl px-4 lg:px-8">
@@ -63,7 +71,7 @@ export function Hero() {
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.2, duration: 0.4 }}
-              className="inline-flex flex-wrap items-center gap-2 px-3 sm:px-4 py-2 rounded-full bg-emerald-50 border border-emerald-100 mb-6 max-w-full"
+              className="inline-flex flex-wrap items-center gap-2 px-3 sm:px-4 py-2 rounded-full bg-white/10 border border-white/20 backdrop-blur-sm mb-6 max-w-full"
             >
               <div className="flex -space-x-2 flex-shrink-0">
                 {trustBadgeImages.map((img, i) => (
@@ -77,7 +85,7 @@ export function Hero() {
                   />
                 ))}
               </div>
-              <span className="text-xs sm:text-sm font-medium text-emerald-900">
+              <span className="text-xs sm:text-sm font-medium text-white">
                 Trusted by 500+ companies
               </span>
               <div className="flex items-center gap-0.5 flex-shrink-0">
@@ -88,7 +96,7 @@ export function Hero() {
             </motion.div>
 
             {/* Main Headline */}
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight tracking-tight">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight tracking-tight">
               The right{" "}
               <span className="relative">
                 <span className="relative z-10 text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-teal-600">
@@ -101,7 +109,7 @@ export function Hero() {
               change everything
             </h1>
 
-            <p className="mt-6 text-lg sm:text-xl text-gray-600 leading-relaxed">
+            <p className="mt-6 text-lg sm:text-xl text-gray-200 leading-relaxed">
               {siteConfig.name} matches skilled professionals with companies that need them --
               across tech, healthcare, finance, manufacturing, and more. Fast placements. Lasting results.
             </p>
@@ -144,13 +152,13 @@ export function Hero() {
             </motion.div>
 
             {/* Quick Links */}
-            <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-gray-600">
-              <span className="font-medium text-gray-900">Popular:</span>
+            <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-gray-300">
+              <span className="font-medium text-white">Popular:</span>
               {["Software Engineer", "Healthcare", "Finance", "Remote"].map((term) => (
                 <Link
                   key={term}
                   href={`/jobs?q=${encodeURIComponent(term)}`}
-                  className="hover:text-emerald-600 transition-colors"
+                  className="hover:text-emerald-400 transition-colors"
                 >
                   {term}
                 </Link>
@@ -170,13 +178,13 @@ export function Hero() {
                   Hire Talent
                 </Link>
               </Button>
-              <Button asChild variant="outline" size="lg" className="w-full sm:w-auto px-6 sm:px-8 py-5 sm:py-6 h-auto text-base font-semibold rounded-xl border-2 border-gray-200 hover:border-emerald-200 hover:bg-emerald-50">
+              <Button asChild variant="outline" size="lg" className="w-full sm:w-auto px-6 sm:px-8 py-5 sm:py-6 h-auto text-base font-semibold rounded-xl border-2 border-white/30 text-white hover:border-emerald-400 hover:bg-white/10">
                 <Link href="/jobs" className="flex items-center justify-center gap-2">
                   <Briefcase className="h-5 w-5" />
                   Find Jobs
                 </Link>
               </Button>
-              <Button variant="ghost" size="lg" className="w-full sm:w-auto px-6 py-5 sm:py-6 h-auto text-base font-semibold rounded-xl text-gray-600 hover:text-emerald-600" asChild>
+              <Button variant="ghost" size="lg" className="w-full sm:w-auto px-6 py-5 sm:py-6 h-auto text-base font-semibold rounded-xl text-gray-300 hover:text-emerald-400 hover:bg-white/10" asChild>
                 <Link href="/about" className="flex items-center justify-center gap-2">
                   <Play className="h-5 w-5 fill-current" />
                   Watch How It Works
@@ -189,7 +197,7 @@ export function Hero() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.5, duration: 0.5 }}
-              className="mt-8 sm:mt-12 pt-6 sm:pt-8 border-t border-gray-100"
+              className="mt-8 sm:mt-12 pt-6 sm:pt-8 border-t border-white/20"
             >
               <div className="flex flex-wrap items-center gap-3 sm:gap-4">
                 <div className="flex -space-x-2 sm:-space-x-3 flex-shrink-0">
@@ -209,9 +217,9 @@ export function Hero() {
                     {[1, 2, 3, 4, 5].map((i) => (
                       <Star key={i} className="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-yellow-400 text-yellow-400" />
                     ))}
-                    <span className="ml-1 sm:ml-2 text-xs sm:text-sm font-semibold text-gray-900">4.9/5</span>
+                    <span className="ml-1 sm:ml-2 text-xs sm:text-sm font-semibold text-white">4.9/5</span>
                   </div>
-                  <p className="text-xs sm:text-sm text-gray-600">from 500+ verified reviews</p>
+                  <p className="text-xs sm:text-sm text-gray-300">from 500+ verified reviews</p>
                 </div>
               </div>
             </motion.div>
@@ -310,7 +318,7 @@ export function Hero() {
       </div>
 
       {/* Stats Bar */}
-      <div className="border-t border-gray-100 bg-gray-50/50">
+      <div className="border-t border-gray-100 bg-white">
         <div className="mx-auto max-w-7xl px-4 lg:px-8 py-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {stats.map((stat, index) => (
