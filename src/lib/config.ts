@@ -6,7 +6,7 @@ export const siteConfig = {
 
   contact: {
     phone: "(888) 762-6691",
-    email: "support@brandmetrics.us",
+    email: "support@humanlyhired.com",
     address: {
       street: "1209 Mountain Road Pl NE",
       suite: "Suite R",

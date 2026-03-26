@@ -108,7 +108,7 @@ const organizationSchema = {
     addressCountry: "US",
   },
   telephone: "+1-888-762-6691",
-  email: "support@brandmetrics.us",
+  email: "support@humanlyhired.com",
   contactPoint: [
     {
       "@type": "ContactPoint",
@@ -169,7 +169,7 @@ const employmentAgencySchema = {
   logo: "https://humanlyhired.com/logo.png",
   image: "https://humanlyhired.com/logo.png",
   telephone: "+1-888-762-6691",
-  email: "support@brandmetrics.us",
+  email: "support@humanlyhired.com",
   description: "Full-service staffing and recruitment agency offering executive search, contract staffing, direct hire placement, RPO, talent sourcing, and payroll services across multiple industries.",
   address: {
     "@type": "PostalAddress",
