@@ -6,14 +6,14 @@ import { searchAdzunaJobs } from './adzuna';
 import { searchUSAJobs } from './usajobs';
 import { searchRemotiveJobs } from './remotive';
 import { searchArbeitnowJobs } from './arbeitnow';
-import { searchJoinRiseJobsMultiPage } from './joinrise';
+import { searchJoinRiseJobs } from './joinrise';
 import { jobs as mockJobs } from '@/data/jobs';
 import { supabaseAdmin } from '@/lib/supabase';
 
 // Configuration for which APIs to use
 const API_CONFIG = {
   database: { enabled: true, weight: 1.5 }, // Database jobs get highest priority
-  joinrise: { enabled: false, weight: 1.3 }, // DISABLED - causes 30s load times fetching 10k jobs
+  joinrise: { enabled: true, weight: 1.3 }, // Free US jobs API - single page per request
   adzuna: { enabled: false, weight: 1.0 }, // Requires API keys
   usajobs: { enabled: false, weight: 0.8 }, // Requires API keys
   remotive: { enabled: false, weight: 0.9 }, // Disabled - mostly international
@@ -271,9 +271,10 @@ export async function searchAllJobs(params: JobSearchParams = {}): Promise<JobAp
   }
 
   if (API_CONFIG.joinrise.enabled) {
-    // Fetch multiple pages from JoinRise for maximum US job coverage
-    // JoinRise has 10,000+ US jobs - fetch 100 pages of 100 jobs each
-    apiPromises.push(searchJoinRiseJobsMultiPage({ ...params, limit: 10000 }, 100).catch(err => {
+    // Fetch single page from JoinRise - pass through pagination params
+    const joinriseLimit = params.limit || 24;
+    const joinrisePage = params.page || 1;
+    apiPromises.push(searchJoinRiseJobs({ ...params, limit: joinriseLimit, page: joinrisePage }).catch(err => {
       console.error('JoinRise fetch failed:', err);
       return { jobs: [], total: 0, page: 1, totalPages: 0, source: 'joinrise' };
     }));
