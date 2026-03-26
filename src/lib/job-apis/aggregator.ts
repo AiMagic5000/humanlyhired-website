@@ -13,7 +13,7 @@ import { supabaseAdmin } from '@/lib/supabase';
 // Configuration for which APIs to use
 const API_CONFIG = {
   database: { enabled: true, weight: 1.5 }, // Database jobs get highest priority
-  joinrise: { enabled: true, weight: 1.3 }, // Free US jobs API - 10,000+ jobs, no key required
+  joinrise: { enabled: false, weight: 1.3 }, // DISABLED - causes 30s load times fetching 10k jobs
   adzuna: { enabled: false, weight: 1.0 }, // Requires API keys
   usajobs: { enabled: false, weight: 0.8 }, // Requires API keys
   remotive: { enabled: false, weight: 0.9 }, // Disabled - mostly international
