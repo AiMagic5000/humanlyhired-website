@@ -18,10 +18,13 @@ import {
   Trash2,
   Edit,
   Loader2,
+  DollarSign,
+  Clock,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
+import { useProfile, type ProfileData as QuestionnaireData } from "@/hooks/use-profile";
 
 interface Experience {
   id: string;
@@ -56,6 +59,12 @@ interface Profile {
   experience: Experience[];
   education: Education[];
   skills: string[];
+  // Application questionnaire fields
+  monthlyNeed: string;
+  monthlyWant: string;
+  startDate: string;
+  hoursPerWeek: string;
+  workPreference: string;
 }
 
 // Default profile data for new users
@@ -74,6 +83,11 @@ const defaultProfile: Profile = {
   experience: [],
   education: [],
   skills: [],
+  monthlyNeed: "",
+  monthlyWant: "",
+  startDate: "",
+  hoursPerWeek: "",
+  workPreference: "",
 };
 
 export default function ProfilePage() {
@@ -82,8 +96,9 @@ export default function ProfilePage() {
   const [loading, setLoading] = useState(true);
   const [profile, setProfile] = useState<Profile>(defaultProfile);
   const [newSkill, setNewSkill] = useState("");
+  const { profile: questionnaireProfile, loading: questionnaireLoading, saveProfile: saveQuestionnaire } = useProfile();
 
-  // Load profile on mount
+  // Load profile on mount (merge both profile sources)
   useEffect(() => {
     const fetchProfile = async () => {
       try {
@@ -91,25 +106,65 @@ export default function ProfilePage() {
         const result = await response.json();
 
         if (result.success && result.data) {
-          setProfile({
+          setProfile((prev) => ({
             ...defaultProfile,
             ...result.data,
-          });
+            // Merge questionnaire data from Clerk metadata if it exists
+            ...(questionnaireProfile ? {
+              monthlyNeed: questionnaireProfile.monthlyNeed || "",
+              monthlyWant: questionnaireProfile.monthlyWant || "",
+              startDate: questionnaireProfile.startDate || "",
+              hoursPerWeek: questionnaireProfile.hoursPerWeek || "",
+              workPreference: questionnaireProfile.workPreference || "",
+            } : {}),
+          }));
+        } else if (questionnaireProfile) {
+          // If no Supabase profile, still load questionnaire data
+          setProfile((prev) => ({
+            ...defaultProfile,
+            firstName: questionnaireProfile.firstName || "",
+            lastName: questionnaireProfile.lastName || "",
+            email: questionnaireProfile.email || "",
+            phone: questionnaireProfile.phone || "",
+            monthlyNeed: questionnaireProfile.monthlyNeed || "",
+            monthlyWant: questionnaireProfile.monthlyWant || "",
+            startDate: questionnaireProfile.startDate || "",
+            hoursPerWeek: questionnaireProfile.hoursPerWeek || "",
+            workPreference: questionnaireProfile.workPreference || "",
+          }));
         }
       } catch (error) {
         console.error("Failed to fetch profile:", error);
+        // Still apply questionnaire data on fetch error
+        if (questionnaireProfile) {
+          setProfile((prev) => ({
+            ...prev,
+            firstName: questionnaireProfile.firstName || prev.firstName,
+            lastName: questionnaireProfile.lastName || prev.lastName,
+            email: questionnaireProfile.email || prev.email,
+            phone: questionnaireProfile.phone || prev.phone,
+            monthlyNeed: questionnaireProfile.monthlyNeed || "",
+            monthlyWant: questionnaireProfile.monthlyWant || "",
+            startDate: questionnaireProfile.startDate || "",
+            hoursPerWeek: questionnaireProfile.hoursPerWeek || "",
+            workPreference: questionnaireProfile.workPreference || "",
+          }));
+        }
       } finally {
         setLoading(false);
       }
     };
 
-    fetchProfile();
-  }, []);
+    if (!questionnaireLoading) {
+      fetchProfile();
+    }
+  }, [questionnaireProfile, questionnaireLoading]);
 
   const handleSave = async () => {
     setSaving(true);
 
     try {
+      // Save professional profile to Supabase
       const response = await fetch("/api/profiles", {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
@@ -120,6 +175,24 @@ export default function ProfilePage() {
 
       if (!response.ok) {
         throw new Error(result.error || "Failed to save profile");
+      }
+
+      // Save questionnaire data to Clerk metadata (if any questionnaire fields filled)
+      const hasQuestionnaireData = profile.monthlyNeed || profile.monthlyWant ||
+        profile.startDate || profile.hoursPerWeek || profile.workPreference;
+
+      if (hasQuestionnaireData) {
+        await saveQuestionnaire({
+          firstName: profile.firstName,
+          lastName: profile.lastName,
+          email: profile.email,
+          phone: profile.phone,
+          monthlyNeed: profile.monthlyNeed,
+          monthlyWant: profile.monthlyWant,
+          startDate: profile.startDate,
+          hoursPerWeek: profile.hoursPerWeek,
+          workPreference: profile.workPreference,
+        });
       }
 
       setSaved(true);
@@ -214,15 +287,20 @@ export default function ProfilePage() {
 
   const calculateProfileStrength = () => {
     let score = 0;
-    if (profile.firstName && profile.lastName) score += 15;
-    if (profile.email) score += 15;
-    if (profile.phone) score += 10;
-    if (profile.location) score += 10;
-    if (profile.headline) score += 10;
-    if (profile.about) score += 10;
-    if (profile.experience.length > 0) score += 15;
-    if (profile.education.length > 0) score += 10;
+    if (profile.firstName && profile.lastName) score += 10;
+    if (profile.email) score += 10;
+    if (profile.phone) score += 5;
+    if (profile.location) score += 5;
+    if (profile.headline) score += 5;
+    if (profile.about) score += 5;
+    if (profile.experience.length > 0) score += 10;
+    if (profile.education.length > 0) score += 5;
     if (profile.skills.length >= 3) score += 5;
+    // Questionnaire fields
+    if (profile.monthlyNeed && profile.monthlyWant) score += 10;
+    if (profile.startDate) score += 10;
+    if (profile.hoursPerWeek) score += 10;
+    if (profile.workPreference) score += 10;
     return Math.min(score, 100);
   };
 
@@ -338,6 +416,14 @@ export default function ProfilePage() {
                 )}
                 Work experience added
               </li>
+              <li className="flex items-center gap-2 text-gray-500">
+                {profile.monthlyNeed && profile.startDate && profile.workPreference ? (
+                  <Check className="w-4 h-4 text-emerald-500" />
+                ) : (
+                  <div className="w-4 h-4 rounded-full border-2 border-gray-300" />
+                )}
+                Job preferences set
+              </li>
               <li className="flex items-center gap-2 text-gray-400">
                 {profile.resumeUrl ? (
                   <Check className="w-4 h-4 text-emerald-500" />
@@ -441,6 +527,98 @@ export default function ProfilePage() {
                   className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
                   placeholder="Tell employers about yourself..."
                 />
+              </div>
+            </div>
+          </div>
+
+          {/* Job Preferences (Questionnaire Fields) */}
+          <div className="bg-white rounded-xl border p-6">
+            <div className="flex items-center gap-2 mb-6">
+              <Clock className="w-5 h-5 text-emerald-600" />
+              <h3 className="font-semibold text-gray-900">Job Preferences</h3>
+            </div>
+            <p className="text-sm text-gray-500 mb-6">
+              These preferences help us match you with the right opportunities and speed up your applications.
+            </p>
+            <div className="grid gap-6 sm:grid-cols-2">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  How much do you NEED to make per month?
+                </label>
+                <div className="relative">
+                  <DollarSign className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+                  <Input
+                    value={profile.monthlyNeed}
+                    onChange={(e) => setProfile({ ...profile, monthlyNeed: e.target.value })}
+                    className="pl-10"
+                    placeholder="3,000"
+                  />
+                </div>
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  How much do you WANT to make per month?
+                </label>
+                <div className="relative">
+                  <DollarSign className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+                  <Input
+                    value={profile.monthlyWant}
+                    onChange={(e) => setProfile({ ...profile, monthlyWant: e.target.value })}
+                    className="pl-10"
+                    placeholder="5,000"
+                  />
+                </div>
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  When can you start?
+                </label>
+                <select
+                  value={profile.startDate}
+                  onChange={(e) => setProfile({ ...profile, startDate: e.target.value })}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 bg-white"
+                >
+                  <option value="">Select...</option>
+                  <option value="immediately">Immediately</option>
+                  <option value="within-1-week">Within 1 week</option>
+                  <option value="within-2-weeks">Within 2 weeks</option>
+                  <option value="within-1-month">Within 1 month</option>
+                  <option value="1-2-months">1-2 months</option>
+                  <option value="3-plus-months">3+ months</option>
+                </select>
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Hours per week
+                </label>
+                <select
+                  value={profile.hoursPerWeek}
+                  onChange={(e) => setProfile({ ...profile, hoursPerWeek: e.target.value })}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 bg-white"
+                >
+                  <option value="">Select...</option>
+                  <option value="less-than-10">Less than 10</option>
+                  <option value="10-20">10-20</option>
+                  <option value="20-30">20-30</option>
+                  <option value="30-40">30-40</option>
+                  <option value="40-plus">40+ (Full-time)</option>
+                </select>
+              </div>
+              <div className="sm:col-span-2">
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Work preference
+                </label>
+                <select
+                  value={profile.workPreference}
+                  onChange={(e) => setProfile({ ...profile, workPreference: e.target.value })}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 bg-white"
+                >
+                  <option value="">Select...</option>
+                  <option value="on-location">On-location only</option>
+                  <option value="remote">Remote only</option>
+                  <option value="hybrid">Hybrid (mix of both)</option>
+                  <option value="no-preference">No preference</option>
+                </select>
               </div>
             </div>
           </div>

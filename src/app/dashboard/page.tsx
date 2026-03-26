@@ -15,9 +15,16 @@ import {
   Bell,
   Loader2,
   RefreshCw,
+  User,
+  Mail,
+  Phone,
+  DollarSign,
+  MapPin,
+  Pencil,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
+import { useProfile, type ProfileData } from "@/hooks/use-profile";
 
 interface DashboardStats {
   applications: number;
@@ -54,8 +61,33 @@ const statusColors: Record<string, { bg: string; text: string; label: string }> 
   rejected: { bg: "bg-red-100", text: "text-red-800", label: "Not Selected" },
 };
 
+const startDateLabels: Record<string, string> = {
+  immediately: "Immediately",
+  "within-1-week": "Within 1 week",
+  "within-2-weeks": "Within 2 weeks",
+  "within-1-month": "Within 1 month",
+  "1-2-months": "1-2 months",
+  "3-plus-months": "3+ months",
+};
+
+const hoursLabels: Record<string, string> = {
+  "less-than-10": "Less than 10",
+  "10-20": "10-20",
+  "20-30": "20-30",
+  "30-40": "30-40",
+  "40-plus": "40+ (Full-time)",
+};
+
+const workPrefLabels: Record<string, string> = {
+  "on-location": "On-location only",
+  remote: "Remote only",
+  hybrid: "Hybrid (mix of both)",
+  "no-preference": "No preference",
+};
+
 function DashboardContent() {
   const { user, isLoaded: userLoaded } = useUser();
+  const { profile, loading: profileLoading, hasProfile } = useProfile();
   const [stats, setStats] = useState<DashboardStats>({
     applications: 0,
     savedJobs: 0,
@@ -270,26 +302,104 @@ function DashboardContent() {
         </div>
       </div>
 
-      {/* Notifications */}
-      <div className="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl p-6 text-white">
-        <div className="flex items-start gap-4">
-          <div className="p-3 bg-white/20 rounded-xl">
-            <Bell className="w-6 h-6" />
-          </div>
-          <div className="flex-1">
-            <h3 className="font-semibold text-lg">Complete Your Profile</h3>
-            <p className="text-blue-100 mt-1">
-              Profiles with complete information get 3x more views from recruiters.
-              Add your skills, experience, and upload your resume to stand out.
-            </p>
-            <Button variant="secondary" className="mt-4 bg-white text-blue-600 hover:bg-blue-50" asChild>
+      {/* Your Profile Card */}
+      {hasProfile && profile ? (
+        <div className="bg-white rounded-2xl border border-gray-200 p-6">
+          <div className="flex items-center justify-between mb-5">
+            <h2 className="text-lg font-semibold text-gray-900">Your Profile</h2>
+            <Button variant="outline" size="sm" asChild className="gap-2">
               <Link href="/dashboard/profile">
-                Complete Profile
+                <Pencil className="w-3.5 h-3.5" />
+                Edit Profile
               </Link>
             </Button>
           </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
+              <User className="w-5 h-5 text-emerald-600 flex-shrink-0" />
+              <div className="min-w-0">
+                <p className="text-xs text-gray-500">Name</p>
+                <p className="text-sm font-medium text-gray-900 truncate">
+                  {profile.firstName} {profile.lastName}
+                </p>
+              </div>
+            </div>
+            <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
+              <Mail className="w-5 h-5 text-emerald-600 flex-shrink-0" />
+              <div className="min-w-0">
+                <p className="text-xs text-gray-500">Email</p>
+                <p className="text-sm font-medium text-gray-900 truncate">
+                  {profile.email}
+                </p>
+              </div>
+            </div>
+            <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
+              <Phone className="w-5 h-5 text-emerald-600 flex-shrink-0" />
+              <div className="min-w-0">
+                <p className="text-xs text-gray-500">Phone</p>
+                <p className="text-sm font-medium text-gray-900 truncate">
+                  {profile.phone}
+                </p>
+              </div>
+            </div>
+            <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
+              <DollarSign className="w-5 h-5 text-emerald-600 flex-shrink-0" />
+              <div className="min-w-0">
+                <p className="text-xs text-gray-500">Monthly Need / Want</p>
+                <p className="text-sm font-medium text-gray-900 truncate">
+                  ${profile.monthlyNeed} / ${profile.monthlyWant}
+                </p>
+              </div>
+            </div>
+            <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
+              <Clock className="w-5 h-5 text-emerald-600 flex-shrink-0" />
+              <div className="min-w-0">
+                <p className="text-xs text-gray-500">Availability</p>
+                <p className="text-sm font-medium text-gray-900 truncate">
+                  {startDateLabels[profile.startDate] || profile.startDate} / {hoursLabels[profile.hoursPerWeek] || profile.hoursPerWeek} hrs/wk
+                </p>
+              </div>
+            </div>
+            <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
+              <MapPin className="w-5 h-5 text-emerald-600 flex-shrink-0" />
+              <div className="min-w-0">
+                <p className="text-xs text-gray-500">Work Preference</p>
+                <p className="text-sm font-medium text-gray-900 truncate">
+                  {workPrefLabels[profile.workPreference] || profile.workPreference}
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
+      ) : (
+        <div className="bg-gradient-to-r from-emerald-600 to-teal-600 rounded-2xl p-6 text-white">
+          <div className="flex items-start gap-4">
+            <div className="p-3 bg-white/20 rounded-xl">
+              <Bell className="w-6 h-6" />
+            </div>
+            <div className="flex-1">
+              <h3 className="font-semibold text-lg">Complete Your Profile</h3>
+              <p className="text-emerald-100 mt-1">
+                Complete your profile to get matched with the best jobs. Profiles
+                with complete information get 3x more views from recruiters and
+                let you apply with one click.
+              </p>
+              <div className="flex flex-wrap gap-3 mt-4">
+                <Button variant="secondary" className="bg-white text-emerald-600 hover:bg-emerald-50" asChild>
+                  <Link href="/dashboard/profile">
+                    Complete Profile
+                  </Link>
+                </Button>
+                <Button variant="secondary" className="bg-white/20 text-white hover:bg-white/30 border-0" asChild>
+                  <Link href="/jobs">
+                    Browse Jobs
+                  </Link>
+                </Button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
