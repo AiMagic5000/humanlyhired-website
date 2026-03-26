@@ -6,8 +6,21 @@ import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/lib/config";
 
 export const metadata: Metadata = {
-  title: "About Us",
-  description: "Learn about Brand Metrics LLC and our mission to connect top talent with growing companies.",
+  title: "About Our Staffing Agency",
+  description:
+    "Humanly Hired by Brand Metrics LLC has placed 2,500+ professionals since 2010. Learn about our mission, values, and team. Get in touch today.",
+  openGraph: {
+    title: "About Our Staffing Agency | Humanly Hired",
+    description:
+      "Humanly Hired by Brand Metrics LLC has placed 2,500+ professionals since 2010. Learn about our mission, values, and team.",
+    url: "https://humanlyhired.com/about",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "About Our Staffing Agency | Humanly Hired",
+    description:
+      "Humanly Hired by Brand Metrics LLC has placed 2,500+ professionals since 2010. Learn about our mission, values, and team.",
+  },
 };
 
 const values = [

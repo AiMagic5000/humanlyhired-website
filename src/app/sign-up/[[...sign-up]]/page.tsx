@@ -4,8 +4,21 @@ import Link from "next/link";
 import { SafeSignUp } from "@/components/auth/safe-auth-forms";
 
 export const metadata: Metadata = {
-  title: "Sign Up",
-  description: "Create your Humanly Hired account to find your next career opportunity or hire top talent.",
+  title: "Create Your Free Account",
+  description:
+    "Join Humanly Hired for free to search jobs, get matched with employers, and access 2,500+ career opportunities. Sign up in under a minute.",
+  openGraph: {
+    title: "Create Your Free Account | Humanly Hired",
+    description:
+      "Join Humanly Hired for free to search jobs, get matched with employers, and access 2,500+ career opportunities.",
+    url: "https://humanlyhired.com/sign-up",
+  },
+  twitter: {
+    card: "summary",
+    title: "Create Your Free Account | Humanly Hired",
+    description:
+      "Join Humanly Hired for free to search jobs, get matched with employers, and access 2,500+ career opportunities.",
+  },
 };
 
 export default function SignUpPage() {

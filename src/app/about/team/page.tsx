@@ -4,8 +4,21 @@ import Image from "next/image";
 import { Linkedin, Mail } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Our Team",
-  description: "Meet the dedicated team behind Brand Metrics LLC",
+  title: "Meet Our Recruiting Team",
+  description:
+    "Meet the staffing experts at Humanly Hired. Our recruiters specialize in tech, healthcare, and finance hiring across all industries. Connect with us.",
+  openGraph: {
+    title: "Meet Our Recruiting Team | Humanly Hired",
+    description:
+      "Meet the staffing experts at Humanly Hired. Our recruiters specialize in tech, healthcare, and finance hiring across all industries.",
+    url: "https://humanlyhired.com/about/team",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Meet Our Recruiting Team | Humanly Hired",
+    description:
+      "Meet the staffing experts at Humanly Hired. Our recruiters specialize in tech, healthcare, and finance hiring across all industries.",
+  },
 };
 
 const team = [

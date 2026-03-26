@@ -6,8 +6,21 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 
 export const metadata: Metadata = {
-  title: "Blog",
-  description: "Insights, tips, and trends in staffing, recruitment, and career development from Humanly Hired.",
+  title: "Staffing & Career Blog",
+  description:
+    "Read hiring tips, career advice, and recruitment trends from Humanly Hired experts. Stay ahead in staffing, HR, and job search strategies.",
+  openGraph: {
+    title: "Staffing & Career Blog | Humanly Hired",
+    description:
+      "Read hiring tips, career advice, and recruitment trends from Humanly Hired experts. Stay ahead in staffing, HR, and job search strategies.",
+    url: "https://humanlyhired.com/blog",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Staffing & Career Blog | Humanly Hired",
+    description:
+      "Read hiring tips, career advice, and recruitment trends from Humanly Hired experts. Stay ahead in staffing, HR, and job search strategies.",
+  },
 };
 
 const authors = {

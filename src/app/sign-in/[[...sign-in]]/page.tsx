@@ -4,8 +4,21 @@ import Link from "next/link";
 import { SafeSignIn } from "@/components/auth/safe-auth-forms";
 
 export const metadata: Metadata = {
-  title: "Sign In",
-  description: "Sign in to your Humanly Hired account to access your dashboard, applications, and more.",
+  title: "Sign In to Your Account",
+  description:
+    "Sign in to Humanly Hired to track applications, view job matches, and manage your staffing dashboard. Access your account now.",
+  openGraph: {
+    title: "Sign In to Your Account | Humanly Hired",
+    description:
+      "Sign in to Humanly Hired to track applications, view job matches, and manage your staffing dashboard.",
+    url: "https://humanlyhired.com/sign-in",
+  },
+  twitter: {
+    card: "summary",
+    title: "Sign In to Your Account | Humanly Hired",
+    description:
+      "Sign in to Humanly Hired to track applications, view job matches, and manage your staffing dashboard.",
+  },
 };
 
 export default function SignInPage() {

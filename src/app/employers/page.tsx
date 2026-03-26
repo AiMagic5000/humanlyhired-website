@@ -6,8 +6,21 @@ import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/lib/config";
 
 export const metadata: Metadata = {
-  title: "For Employers",
-  description: "Partner with Humanly Hired to find top talent for your organization. Fast, reliable, and quality-guaranteed staffing solutions.",
+  title: "Employer Staffing Solutions",
+  description:
+    "Hire pre-screened candidates in 14 days with a 90-day guarantee. Humanly Hired offers direct hire, contract staffing, and RPO. Request talent now.",
+  openGraph: {
+    title: "Employer Staffing Solutions | Humanly Hired",
+    description:
+      "Hire pre-screened candidates in 14 days with a 90-day guarantee. Humanly Hired offers direct hire, contract staffing, and RPO.",
+    url: "https://humanlyhired.com/employers",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Employer Staffing Solutions | Humanly Hired",
+    description:
+      "Hire pre-screened candidates in 14 days with a 90-day guarantee. Humanly Hired offers direct hire, contract staffing, and RPO.",
+  },
 };
 
 const benefits = [
